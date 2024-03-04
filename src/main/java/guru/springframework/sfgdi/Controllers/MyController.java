@@ -1,14 +1,19 @@
 package guru.springframework.sfgdi.Controllers;
 
+import guru.springframework.sfgdi.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 import java.time.Clock;
 
 @Controller
 public class MyController {
-    public String sayHello(){
-        System.out.println("Helloworld!!!");
+    private final GreetingService greetingService;
 
-        return "Hi folks";
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String sayHello(){
+      return greetingService.sayGreeting();
     }
 }
